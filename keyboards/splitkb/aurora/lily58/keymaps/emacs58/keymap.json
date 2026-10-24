@@ -1,6 +1,4 @@
 {
-  "documentation": "\"This file is a QMK Configurator export. You can import this at <https://config.qmk.fm>. It can also be used directly with QMK's source code.\n\nTo setup your QMK environment check out the tutorial: <https://docs.qmk.fm/#/newbs>\n\nYou can convert this file to a keymap.c using this command: `qmk json2c {keymap}`\n\nYou can compile this keymap using this command: `qmk compile {keymap}`\"\n",
-  "notes": "",
   "version": 1,
   "keyboard": "splitkb/aurora/lily58/rev1",
   "keymap": "emacs58",
@@ -56,7 +54,7 @@
       "KC_COMM",
       "KC_DOT",
       "KC_SLSH",
-      "KC_ESC",
+      "KC_RSFT",
       "KC_LGUI",
       "KC_LALT",
       "KC_LCTL",
@@ -67,16 +65,16 @@
       "KC_RALT"
     ],
     [
-      "KC_NO",
-      "KC_NO",
-      "KC_NO",
-      "KC_NO",
-      "KC_NO",
-      "KC_NO",
-      "KC_NO",
-      "KC_NO",
-      "KC_NO",
-      "KC_NO",
+      "QK_MACRO_0",
+      "QK_MACRO_1",
+      "QK_MACRO_2",
+      "QK_MACRO_3",
+      "QK_MACRO_4",
+      "QK_MACRO_5",
+      "LCTL(KC_SLSH)",
+      "LCTL(LSFT(KC_SLSH))",
+      "LALT(KC_LT)",
+      "LALT(KC_GT)",
       "KC_NO",
       "KC_NO",
       "KC_TRNS",
@@ -116,7 +114,7 @@
       "LALT(KC_LCBR)",
       "LALT(KC_RCBR)",
       "KC_NO",
-      "KC_RSFT",
+      "KC_ESC",
       "KC_LGUI",
       "KC_LALT",
       "KC_LCTL",
@@ -187,5 +185,19 @@
       "KC_NO"
     ]
   ],
+  "macros": [
+    [{"action": "tap", "keycodes": ["LCTL", "X"]}, "0"],
+    [{"action": "tap", "keycodes": ["LCTL", "X"]}, "1"],
+    [{"action": "tap", "keycodes": ["LCTL", "X"]}, "2"],
+    [{"action": "tap", "keycodes": ["LCTL", "X"]}, "3"],
+    [{"action": "tap", "keycodes": ["LCTL", "X"]}, "o"],
+    [{"action": "tap", "keycodes": ["LCTL", "X"]}, "k"]
+  ],
+  "config": {
+    "caps_word": {
+      "enabled": true,
+      "both_shifts_turns_on": true
+    }
+  },
   "author": ""
 }

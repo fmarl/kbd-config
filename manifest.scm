@@ -10,4 +10,6 @@
   (specifications->manifest
    (list
     "qmk"
-    "dos2unix"))))
+    "imagemagick"
+    "make"
+    "gcc-toolchain"))))
