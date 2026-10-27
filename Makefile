@@ -11,7 +11,7 @@ MOUNT_DIR  := /tmp/rpi-rp2
 export QMK_HOME
 export QMK_USERSPACE := $(CURDIR)
 
-.PHONY: all setup symbols preview flash clean $(FIRMWARE)
+.PHONY: all setup preview flash clean $(FIRMWARE)
 
 all: $(FIRMWARE)
 
@@ -20,19 +20,12 @@ setup:
 	    git clone --depth 1 --recurse-submodules --shallow-submodules \
 	        https://github.com/qmk/qmk_firmware $(QMK_HOME)
 
-symbols:
-	sh scripts/make-symbols.sh images
-
 $(KEYMAP_DIR)/%_symbol.h: images/%.png scripts/oled-image.sh scripts/pbm-to-oled.awk
 	sh scripts/oled-image.sh $*_symbol $< > $@.tmp
 	mv $@.tmp $@
 
-# Always handed to qmk, which builds incrementally and notices changed options.
 $(FIRMWARE): $(SYMBOLS)
 	qmk compile -kb $(KEYBOARD) -km $(KEYMAP) -e CONVERT_TO=$(CONVERT_TO)
-
-preview: $(SYMBOLS)
-	sh scripts/oled-preview.sh $(QMK_HOME) $(KEYMAP_DIR) preview
 
 flash: $(FIRMWARE)
 	@echo "Waiting for RPI-RP2 (double-tap reset on the half to flash)..."
